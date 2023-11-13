@@ -1,0 +1,157 @@
+<<<<<<< HEAD
+package Chess.pieces;
+
+import Chess.ChessPiece;
+import Chess.Color;
+import boardGame.Board;
+import boardGame.Position;
+
+public class Pawn extends ChessPiece {
+
+	public Pawn(Board board, Color color) {
+		super(board, color);
+	}
+
+	@Override
+	public boolean[][] possibleMoves() {
+		boolean[][] mat = new boolean[getBoard().getRows()][getBoard().getColumns()];
+		Position p = new Position(0,0);
+		
+		if(getColor()==Color.WHITE) {
+		//1 casa a frente	
+		p.setValue(position.getRow()-1, position.getColumn());	
+		if(getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
+			mat[p.getRow()][p.getColumn()]=true;
+			}
+		//2 casas a frente, 1º movimento
+		p.setValue(position.getRow()-2, position.getColumn());
+		Position p2= new Position(position.getRow()-1,position.getColumn());
+			if(getBoard().positionExists(p) && !getBoard().thereIsAPiece(p) && getMoveCount()==0 && getBoard().positionExists(p2) && !getBoard().thereIsAPiece(p2)) {
+			mat[p.getRow()][p.getColumn()]=true;
+			}
+		//diagonal esquerda	
+			p.setValue(position.getRow()-1, position.getColumn()-1);	
+			if(getBoard().positionExists(p) && isThereOpponentPiece(p)) {
+				mat[p.getRow()][p.getColumn()]=true;
+				}
+		//diagonal direita	
+			p.setValue(position.getRow()-1, position.getColumn()+1);	
+			if(getBoard().positionExists(p) && isThereOpponentPiece(p)) {
+				mat[p.getRow()][p.getColumn()]=true;
+				}
+			
+		}
+		else{//AGORA FAZ O TESTE PARA AS PEÇAS PRETAS
+			//1 casa a frente	
+			p.setValue(position.getRow()+1, position.getColumn());	
+			if(getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
+				mat[p.getRow()][p.getColumn()]=true;
+				}
+			//2 casas a frente, 1º movimento
+			p.setValue(position.getRow()+2, position.getColumn());
+			Position p2= new Position(position.getRow()+1,position.getColumn());
+				if(getBoard().positionExists(p) && !getBoard().thereIsAPiece(p) && getMoveCount()==0 && getBoard().positionExists(p2) && !getBoard().thereIsAPiece(p2)) {
+				mat[p.getRow()][p.getColumn()]=true;
+				}
+			//diagonal esquerda	
+				p.setValue(position.getRow()+1, position.getColumn()-1);	
+				if(getBoard().positionExists(p) && isThereOpponentPiece(p)) {
+					mat[p.getRow()][p.getColumn()]=true;
+					}
+			//diagonal direita	
+				p.setValue(position.getRow()+1, position.getColumn()+1);	
+				if(getBoard().positionExists(p) && isThereOpponentPiece(p)) {
+					mat[p.getRow()][p.getColumn()]=true;
+					}
+			
+		}
+		
+		return mat;
+		}
+	@Override
+	public String toString() {
+		return "p";
+	}
+	
+	
+
+}
+=======
+package Chess.pieces;
+
+import Chess.ChessPiece;
+import Chess.Color;
+import boardGame.Board;
+import boardGame.Position;
+
+public class Pawn extends ChessPiece {
+
+	public Pawn(Board board, Color color) {
+		super(board, color);
+	}
+
+	@Override
+	public boolean[][] possibleMoves() {
+		boolean[][] mat = new boolean[getBoard().getRows()][getBoard().getColumns()];
+		Position p = new Position(0,0);
+		
+		if(getColor()==Color.WHITE) {
+		//1 casa a frente	
+		p.setValue(position.getRow()-1, position.getColumn());	
+		if(getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
+			mat[p.getRow()][p.getColumn()]=true;
+			}
+		//2 casas a frente, 1º movimento
+		p.setValue(position.getRow()-2, position.getColumn());
+		Position p2= new Position(position.getRow()-1,position.getColumn());
+			if(getBoard().positionExists(p) && !getBoard().thereIsAPiece(p) && getMoveCount()==0 && getBoard().positionExists(p2) && !getBoard().thereIsAPiece(p2)) {
+			mat[p.getRow()][p.getColumn()]=true;
+			}
+		//diagonal esquerda	
+			p.setValue(position.getRow()-1, position.getColumn()-1);	
+			if(getBoard().positionExists(p) && isThereOpponentPiece(p)) {
+				mat[p.getRow()][p.getColumn()]=true;
+				}
+		//diagonal direita	
+			p.setValue(position.getRow()-1, position.getColumn()+1);	
+			if(getBoard().positionExists(p) && isThereOpponentPiece(p)) {
+				mat[p.getRow()][p.getColumn()]=true;
+				}
+			
+		}
+		else{//AGORA FAZ O TESTE PARA AS PEÇAS PRETAS
+			//1 casa a frente	
+			p.setValue(position.getRow()+1, position.getColumn());	
+			if(getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
+				mat[p.getRow()][p.getColumn()]=true;
+				}
+			//2 casas a frente, 1º movimento
+			p.setValue(position.getRow()+2, position.getColumn());
+			Position p2= new Position(position.getRow()+1,position.getColumn());
+				if(getBoard().positionExists(p) && !getBoard().thereIsAPiece(p) && getMoveCount()==0 && getBoard().positionExists(p2) && !getBoard().thereIsAPiece(p2)) {
+				mat[p.getRow()][p.getColumn()]=true;
+				}
+			//diagonal esquerda	
+				p.setValue(position.getRow()+1, position.getColumn()-1);	
+				if(getBoard().positionExists(p) && isThereOpponentPiece(p)) {
+					mat[p.getRow()][p.getColumn()]=true;
+					}
+			//diagonal direita	
+				p.setValue(position.getRow()+1, position.getColumn()+1);	
+				if(getBoard().positionExists(p) && isThereOpponentPiece(p)) {
+					mat[p.getRow()][p.getColumn()]=true;
+					}
+			
+		}
+		
+		return mat;
+		}
+	@Override
+	public String toString() {
+		return "p";
+	}
+	
+	
+
+}
+>>>>>>> bc77d4ff0c095b7eda0227a24d0ed1cb304ac5b5
